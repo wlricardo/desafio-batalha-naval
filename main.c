@@ -91,8 +91,8 @@ int main() {
     int tab[LIN][COL];
 
     inicializar_tabuleiro(tab);                                             // Inicializa o tabuleiro com 0 (água)
-    inserir_navio(tab, 0, 5, 3, 'H');                                       // Insere um navio horizontal de tamanho 3 na linha 2, coluna 3
-    inserir_navio(tab, 11, 6, 3, 'V');                                      // Insere um navio vertical de tamanho 3 na linha 5, coluna 6
+    inserir_navio(tab, 5, 5, 3, 'H');                                       // Insere um navio horizontal de tamanho 3 na linha 2, coluna 3
+    inserir_navio(tab, 7, 6, 3, 'V');                                       // Insere um navio vertical de tamanho 3 na linha 5, coluna 6
     imprimir_tabuleiro(tab);                                                // Imprime o tabuleiro inicial
     
     printf("\n");
