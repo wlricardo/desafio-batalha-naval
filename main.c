@@ -27,27 +27,7 @@
 */
 
 // FUNÇÕES AUXILIARES
-/* Criar tabuleiro : cria um tabuleiro com LIN linhas e COL colunas */
-void criar_tabuleiro(int tab[LIN][COL]) {    
-    printf("\nTabuleiro de Batalha Naval (0 = água, 3 = navio):\n\n");
-    int titulo_linha[LIN] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    char titulo_coluna[COL] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-
-    printf("     ");
-    for (int j = 0; j < COL; j++) {
-        printf(" [%c]", titulo_coluna[j]);
-    }
-    printf("\n");
-    for (int i = 0; i < LIN; i++) {
-        printf(" [%2d]  ", titulo_linha[i]);
-        for (int j = 0; j < COL; j++) {
-            tab[i][j] = 0;                          // Inicializa todas as posições com 0 (água)
-            printf("%d   ", tab[i][j]);
-        }
-        printf("\n");
-    }
-}
-
+/* Inicializar tabuleiro : preenche o tabuleiro com 0 (água) */
 void inicializar_tabuleiro(int tab[LIN][COL]) {
     for (int i = 0; i < LIN; i++) {
         for (int j = 0; j < COL; j++) {
@@ -56,7 +36,7 @@ void inicializar_tabuleiro(int tab[LIN][COL]) {
     }
 }
 
-/* Imprimir tabuleiro : mostra o tabuleiro com os navios */
+/* Imprimir tabuleiro : mostra o tabuleiro e navios eventualmente inseridos */
 void imprimir_tabuleiro(int tab[LIN][COL]) {
     int titulo_linha[LIN] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     char titulo_coluna[COL] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
@@ -90,7 +70,8 @@ void inserir_navio(int tab[LIN][COL], int linha, int coluna, int tamanho, char o
             }
         }
     } else if (orientacao == 'V') {                 // O navio está na posição vertical
-        if (coluna < 0 || coluna >= COL || linha < 0 || linha + tamanho > LIN) {    // Verifica se o navio cabe no tabuleiro
+        // Verifica se o navio cabe no tabuleiro
+        if (coluna < 0 || coluna >= COL || linha < 0 || linha + tamanho > LIN) {    
             printf("      -> Posição inválida para o navio vertical.\n");
             return;
         }
@@ -102,6 +83,8 @@ void inserir_navio(int tab[LIN][COL], int linha, int coluna, int tamanho, char o
     }
 }
 
+
+// FUNÇÃO PRINCIPAL 
 int main() {
     system("cls");                                                          // Limpa a tela antes de exibir o tabuleiro    
     printf("\nTabuleiro de Batalha Naval (0 = água, 3 = navio):\n\n");      // Cria o tabuleiro de maneira estática
@@ -109,7 +92,7 @@ int main() {
 
     inicializar_tabuleiro(tab);                                             // Inicializa o tabuleiro com 0 (água)
     inserir_navio(tab, 0, 5, 3, 'H');                                       // Insere um navio horizontal de tamanho 3 na linha 2, coluna 3
-    inserir_navio(tab, 11, 6, 3, 'V');                                       // Insere um navio vertical de tamanho 3 na linha 5, coluna 6
+    inserir_navio(tab, 11, 6, 3, 'V');                                      // Insere um navio vertical de tamanho 3 na linha 5, coluna 6
     imprimir_tabuleiro(tab);                                                // Imprime o tabuleiro inicial
     
     printf("\n");
